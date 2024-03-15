@@ -5,16 +5,63 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trade Input Form</title>
+    <style>
+        body {
+            background-color: #333;
+            color: #fff;
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            background-color: #555;
+            color: white;
+            border: 1px solid #aaa;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #008CBA;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #005f73;
+        }
+
+        #responsePlaceholder {
+            white-space: pre-wrap;
+            /* Keeps the format of the JSON response */
+        }
+    </style>
+
 </head>
 
 <body>
     <h1>Trade Input</h1>
     <form id="tradeForm">
+        <label for="tokenInput">Access Token:</label><br>
+        <input type="text" id="tokenInput" name="tokenInput"><br>
         <label for="tradeInput">Paste your trade string:</label><br>
         <input type="text" id="tradeInput" name="tradeInput"><br>
         <button type="submit">Send</button>
     </form>
-
+    <div id="responsePlaceholder"></div>
     <script src="/main.js"></script>
 </body>
 
