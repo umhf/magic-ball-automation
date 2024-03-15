@@ -13,7 +13,7 @@ async function submitTradeOrder(tradeDetails) {
 
     console.log('+++++++ Submitting Order [Object]: ', util.inspect(orderBody, { showHidden: false, depth: null, colors: true }));
 
-    if (NODE_ENV === "development") {
+    if (NODE_ENV === "development1") {
         // Development environment: Just log the order and simulate a successful response
         console.log('+++++++ Development Mode: Order not sent. [JSON]: ', JSON.stringify(orderBody));
         return { data: "Simulated order submission in development mode." }; // Simulate a successful response for development
