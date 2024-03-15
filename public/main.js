@@ -5,7 +5,6 @@ document.getElementById('tradeForm').addEventListener('submit', function (e) {
     button.disabled = true;
     setTimeout(() => button.disabled = false, 5000); // Enable the button after 5 seconds
 
-
     const tradeString = document.getElementById('tradeInput').value;
 
     // Send the tradeString to your server using fetch
@@ -17,12 +16,19 @@ document.getElementById('tradeForm').addEventListener('submit', function (e) {
         },
         body: JSON.stringify({ tradeString }),
     })
-        .then(response => response.json())
+        .then(response => {
+            if (response.ok) {
+                return response.json();
+            } else {
+                throw new Error(`Server responded with ${response.status}: ${response.statusText}`);
+            }
+        })
         .then(data => {
             console.log('Success:', data);
-            document.getElementById('responsePlaceholder').innerText = JSON.stringify(data, null, 2);
+            document.getElementById('responsePlaceholder').innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
         })
         .catch((error) => {
             console.error('Error:', error);
+            document.getElementById('responsePlaceholder').innerHTML = `<pre><code>Error: ${error.message}</code></pre>`;
         });
 });

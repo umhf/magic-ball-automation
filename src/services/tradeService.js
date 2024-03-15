@@ -22,7 +22,7 @@ async function submitTradeOrder(tradeDetails) {
     try {
         const sessionToken = await ensureValidSessionToken();
         const response = await axios.post(`${API_BASE_URL}/accounts/${ACCOUNT_NUMBER}/complex-orders`, orderBody, {
-            headers: { 'Authorization': `Bearer ${sessionToken}` },
+            headers: { 'Authorization': sessionToken },
             'User-Agent': 'spx-trading-bot/1.0'
         });
         console.log("Order submitted successfully: ", util.inspect(response.data, { showHidden: false, depth: null, colors: false }));

@@ -29,7 +29,6 @@ async function createSession() {
         });
         sessionToken = response.data.data['session-token'];
         console.log("Received session token: ", sessionToken);
-        // Reset and set the token expiration to 24 hours from now
         sessionTokenExpiration = moment().add(12, 'hours');
         console.log("Session expires at ", sessionTokenExpiration.format());
         return sessionToken;
