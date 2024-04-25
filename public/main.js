@@ -25,10 +25,10 @@ document.getElementById('tradeForm').addEventListener('submit', function (e) {
         })
         .then(data => {
             console.log('Success:', data);
-            document.getElementById('responsePlaceholder').innerHTML = `<pre><code>${JSON.stringify(data, null, 2)}</code></pre>`;
+            document.getElementById('responsePlaceholder').innerHTML = `<div id="responseWrapper"><pre><code>${JSON.stringify(data, null, 2)}</code></pre></div>`;
         })
         .catch((error) => {
             console.error('Error:', error);
-            document.getElementById('responsePlaceholder').innerHTML = `<pre><code>Error: ${error.message}</code></pre>`;
+            document.getElementById('responsePlaceholder').innerHTML = `<div id="responseWrapper"><pre><code>Error: ${error.message}</code></pre></div>`;
         });
 });
