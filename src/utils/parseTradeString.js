@@ -1,6 +1,21 @@
 const moment = require('moment');
 
+function extractTradeInfo(text) {
+    // Define the regular expression pattern to match the specific trade information
+    const pattern = /SELL -1 Vertical SPX 100 \d{2} [A-Z][a-z]{2} \d{2} \d{4}\/\d{4} PUT @\d+(\.\d+)? LMT/;
+
+    // Search for the pattern in the provided text
+    const match = text.match(pattern);
+
+    // If a match is found, return it, otherwise return a message indicating no match
+    return match ? match[0] : "No trade information found.";
+}
+
+
+
 function parseTradeString(tradeString) {
+    tradeString = extractTradeInfo(tradeString);
+    console.log(tradeString);
     const parts = tradeString.split(' ');
     const contractType = parts[2] + (parts[3] === 'Condor' ? ' Condor' : ''); // Vertical or Iron Condor
     const shift = contractType.split(' ').length - 1;

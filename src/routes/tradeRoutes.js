@@ -15,7 +15,6 @@ router.post('/', [
         return res.status(400).json({ errors: errors.array() });
     }
     const { tradeString } = req.body;
-    console.log(tradeString);
 
     try {
         const tradeDetails = parseTradeString(tradeString);
